@@ -1,0 +1,15 @@
+# one:
+#   record: name_of_fixture (ClassOfFixture)
+#   name: content
+#   body: <p>In a <i>million</i> stars!</p>
+#
+
+one_body:
+  record: unpublished (Post)
+  name: body
+  body: <div>Hello, from <strong>a fixture</strong></div>
+
+two_body:
+  record: published (Post)
+  name: body
+  body: <div>Hello, from <strong>a fixture</strong></div>
