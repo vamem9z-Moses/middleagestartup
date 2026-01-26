@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# For all environments
+load(Rails.root.join('db', 'seeds', 'all_environments.rb'))
+
+# Load environment-specific seeds
+load(Rails.root.join('db', 'seeds', "#{Rails.env.downcase}.rb"))
