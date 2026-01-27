@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   include Sluggable
   include SettablePublicationDate
+  include Taggable
 
   has_rich_text :body
 

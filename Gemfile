@@ -68,6 +68,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Add assert_template function
+  gem "rails-controller-testing"
 end
 
 group :development do

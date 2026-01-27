@@ -6,6 +6,7 @@ class PostTest < ActiveSupport::TestCase
     @published_date = Time.now
     @post = Post.new(title: "A New Post",
                      published: true,
+                     tag_ids: [ tags(:two).id, tags(:one).id ],
                      body: ActionText::RichText.new(body: "<h1>This is a test</h1>"),
                      publication_date: @published_date)
 

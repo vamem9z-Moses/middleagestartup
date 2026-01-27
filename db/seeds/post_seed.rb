@@ -5,6 +5,7 @@ class PostSeed
   include SeedHelper
 
   def create_posts
+    create_tags
     create_post_items
   end
 
@@ -13,6 +14,12 @@ class PostSeed
     def create_post_items
       50.times do |index|
         create_post_item
+      end
+    end
+
+    def create_tags
+      [ "General", "Marketing", "Startup", "Mistakes", "Next Steps" ].each do |name|
+        Tag.create!(name: name)
       end
     end
 
@@ -31,6 +38,14 @@ class PostSeed
                   publication_date: published_date,
                   created_at: created_at,
                   updated_at: updated_at)
+      tags = select_post_tags(post)
+      post.tags = tags
       post.save
+    end
+
+    def select_post_tags(post)
+      tags = Tag.all.shuffle
+      num_of_tags = Random.new.rand(5)
+      tags.slice(0..num_of_tags)
     end
 end

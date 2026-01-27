@@ -11,6 +11,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "index should only return published posts," do
+    get posts_url
+    assert_equal Post.where(published: true).order(updated_at: :desc).limit(9), assigns(:posts)
+  end
+
   test "should show the post" do
     get post_url(@post)
     assert_response :success
