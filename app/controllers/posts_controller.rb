@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # https://cycode.com/blog/infinite-scrolling-pagination-hotwire/
   # GET /posts or /posts.json
   def index
-    @pagy, @posts = pagy(Post.where(published: true).order(updated_at: :desc), items: 9)
+    @pagy, @posts = pagy(:countless, Post.where(published: true).order(updated_at: :desc), limit: 9)
 
     respond_to do |format|
       format.html # GET
