@@ -5,12 +5,14 @@ class PostTest < ActiveSupport::TestCase
     # Save to trigger name creation for author
     @published_date = Time.now
     @post = Post.new(title: "A New Post",
+                     author: authors(:one),
                      published: true,
                      tag_ids: [ tags(:two).id, tags(:one).id ],
                      body: ActionText::RichText.new(body: "<h1>This is a test</h1>"),
                      publication_date: @published_date)
 
     @post_no_publication_date = Post.new(title: "Another new Post",
+                                        author: authors(:one),
                                         published: false,
                                         body: ActionText::RichText.new(body: "<h1>This is a test</h1>"))
   end

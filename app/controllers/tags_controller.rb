@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @pagy, @posts = pagy(:countless, Post.where(published: true).order(updated_at: :desc), limit: 9)
+    @pagy, @posts = pagy(:countless, Post.where(published: true).joins(:tags).where(tags: { name: @tag.name }).order(updated_at: :desc), limit: 9)
 
     respond_to do |format|
       format.html # GET

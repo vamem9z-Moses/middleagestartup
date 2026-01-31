@@ -2,10 +2,12 @@
 
 one:
   title: postone
+  author: one
+  featured_image: one
   published: true
   publication_date: 2025-12-29 09:17:26
-  featured_image: one
 
 two:
   title: posttwo
+  author: two
   published: false
