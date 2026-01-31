@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   include Taggable
 
   has_rich_text :body
+  belongs_to :featured_image, optional: true
 
   validates :title, presence: true
   validates :title, uniqueness: { case_sensitive: false }

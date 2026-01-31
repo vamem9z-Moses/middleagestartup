@@ -1,0 +1,9 @@
+one_featured_image_attachment:
+  name: image 
+  record: one (FeaturedImage)
+  blob: featured_image_blob
+
+two_featured_image_attachment:
+  name: image 
+  record: two (FeaturedImage)
+  blob: featured_image_blob

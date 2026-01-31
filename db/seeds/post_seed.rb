@@ -5,6 +5,10 @@ class PostSeed
   include SeedHelper
 
   def create_posts
+    @featured_images = [ "balloons-unsplash.jpg", "beach-unsplash.jpg", "chips-unsplash.jpg", "cloud-city-unsplash.jpg", "compass-unsplash.jpg", "dark-cloud-unsplash.jpg", "earth-unsplash.jpg",
+                        "greenhouse-unsplash.jpg", "highway-unsplash.jpg", "lilac-unsplash.jpg", "pyramid-unsplash.jpg", "robot-unsplash.jpg", "sphere-unsplash.jpg", "sunset-unsplash.jpg",
+                        "tunnel-unsplash.jpg" ]
+    create_featured_images
     create_tags
     create_post_items
   end
@@ -14,6 +18,16 @@ class PostSeed
     def create_post_items
       50.times do |index|
         create_post_item
+      end
+    end
+
+    def create_featured_images
+      @featured_images.each do |image|
+        featured = FeaturedImage.new(name: Faker::Lorem.sentence(word_count: 4),
+                                    alt_text: Faker::Lorem.sentence(word_count: 6),
+                                    attribution: Faker::Lorem.sentence(word_count: 10))
+        featured.image.attach(io: File.open(Rails.root.join("db/seeds/images/#{image}")), filename: image)
+        featured.save!
       end
     end
 
@@ -33,6 +47,7 @@ class PostSeed
       updated_at = created_at + rand(1...20).day
       post = Post.create!(title: Faker::Book.unique.title,
                   published: published,
+                  featured_image: FeaturedImage.all.sample,
                   body: ActionText::RichText.new(
                     body: Faker::HTML.sandwich(sentences: 5, repeat: 4)),
                   publication_date: published_date,

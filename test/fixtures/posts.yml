@@ -4,6 +4,7 @@ one:
   title: postone
   published: true
   publication_date: 2025-12-29 09:17:26
+  featured_image: one
 
 two:
   title: posttwo

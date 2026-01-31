@@ -1,7 +1,12 @@
  <article class="flex flex-col items-start justify-between">
   <div class="relative w-full">
-    <img src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80" alt="" class="aspect-video w-full rounded-2xl bg-gray-100 object-cover sm:aspect-2/1 lg:aspect-3/2" />
-    <div class="absolute inset-0 rounded-2xl inset-ring inset-ring-gray-900/10"></div>
+      <% if post.featured_image.present? %> 
+        <%= link_to post do %>
+          <%= image_tag url_for(post.featured_image.image), alt: post.featured_image.alt_text, 
+            class: "aspect-video w-full rounded-2xl bg-gray-100 object-cover sm:aspect-2/1 lg:aspect-3/2" %>
+          <div class="absolute inset-0 rounded-2xl inset-ring inset-ring-gray-900/10"></div>
+        <% end %>
+      <% end %>
   </div>
   <div class="flex max-w-xl grow flex-col justify-between">
     <div class="mt-8 flex items-center gap-x-4 text-xs">
