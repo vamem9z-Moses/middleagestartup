@@ -17,14 +17,14 @@
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
-      <%= link_to "Home", "#", class:"text-sm/6 font-semibold text-gray-900" %> 
-      <%= link_to "Blog", "#", class:"text-sm/6 font-semibold text-gray-900" %> 
-      <%= link_to "Tags", "#", class:"text-sm/6 font-semibold text-gray-900" %> 
-      <%= link_to "About", "#", class:"text-sm/6 font-semibold text-gray-900" %> 
+      <%= link_to "Home", "#", class:"text-lg font-semibold text-gray-900" %> 
+      <%= link_to "Blog", posts_path, class:"text-lg font-semibold text-gray-900" %> 
+      <%= link_to "Tags", tags_path, class:"text-lg font-semibold text-gray-900" %> 
+      <%= link_to "About", "#", class:"text-lg font-semibold text-gray-900" %> 
 
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <%= link_to "#", class: "text-sm/6 font-semibold text-gray-900" do %>
+      <%= link_to "#", class: "text-sm font-semibold text-gray-900" do %>
         Log in 
         <span aria-hidden="true">&rarr;</span>
       <% end %>
@@ -50,8 +50,8 @@
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
                 <%= link_to "Home", "#", class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" %> 
-                <%= link_to "Blog", "#", class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" %> 
-                <%= link_to "Tags", "#", class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" %> 
+                <%= link_to "Blog", posts_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" %> 
+                <%= link_to "Tags", tags_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" %> 
                 <%= link_to "About", "#", class: "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50" %> 
               </div>
               <div class="py-6">

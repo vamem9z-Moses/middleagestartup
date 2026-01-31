@@ -1,4 +1,12 @@
-<div>
-  <h1 class="font-bold text-4xl">Tags#index</h1>
-  <p>Find me in app/views/tags/index.html.erb</p>
+<div class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
+    <!-- section title -->
+    <div class="flex justify-center container p-6"> 
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-lg font-semibold mb-4">Tag Cloud</h2>
+        <div>
+          <%= show_tags @tags %>
+        </div>
+      </div>
+    </div>
 </div>
+
