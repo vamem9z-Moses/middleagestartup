@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_31_193750) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_31_205601) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -49,6 +49,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_31_193750) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.string "blurb"
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "featured_images", force: :cascade do |t|
     t.string "alt_text"
     t.string "attribution"
@@ -58,6 +68,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_31_193750) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "author_id"
     t.text "body"
     t.datetime "created_at", null: false
     t.integer "featured_image_id"
@@ -66,6 +77,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_31_193750) do
     t.string "slug"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["featured_image_id"], name: "index_posts_on_featured_image_id"
   end
 
@@ -88,6 +100,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_31_193750) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "posts", "authors"
   add_foreign_key "posts", "featured_images"
   add_foreign_key "posts_tags", "posts"
   add_foreign_key "posts_tags", "tags"

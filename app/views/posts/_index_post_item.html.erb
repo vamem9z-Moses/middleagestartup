@@ -26,15 +26,14 @@
       <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600"><%= post.body.to_plain_text.truncate(180) %></p>
     </div>
     <div class="relative mt-8 flex items-center gap-x-4 justify-self-end">
-      <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-10 rounded-full bg-gray-100" />
+      <%= image_tag url_for(post.author.avatar), alt: post.author.name, class: "size-10 rounded-full bg-gray-100" %>
       <div class="text-sm/6">
         <p class="font-semibold text-gray-900">
           <a href="#">
             <span class="absolute inset-0"></span>
-            Michael Foster
+            <%= post.author.name %>
           </a>
         </p>
-        <p class="text-gray-600">Co-Founder / CTO</p>
       </div>
     </div>
   </div>

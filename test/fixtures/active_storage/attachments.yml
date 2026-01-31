@@ -7,3 +7,9 @@ two_featured_image_attachment:
   name: image 
   record: two (FeaturedImage)
   blob: featured_image_blob
+
+one_author_attachment:
+  name: avatar
+  record: one (Author)
+  blob: avatar_blob
+

@@ -1,1 +1,2 @@
 featured_image_blob: <%= ActiveStorage::FixtureSet.blob filename: "cprpo.jpg", service_name: "test_fixtures" %>
+avatar_blob: <%= ActiveStorage::FixtureSet.blob filename: "blog-bg.svg", service_name: "test_fixtures" %>
