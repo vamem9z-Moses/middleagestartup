@@ -1,4 +1,10 @@
-<div>
-  <h1 class="font-bold text-4xl">Tags#show</h1>
-  <p>Find me in app/views/tags/show.html.erb</p>
+<div class="bg-white py-12">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl"><%= @tag.name %></h2>
+    </div>
+    <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <%= render partial: "posts/index_post_item", collection: @posts, as: :post %>
+    </div>
+  </div>
 </div>

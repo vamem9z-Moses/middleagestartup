@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :posts, only: [ :index, :show ]
-  resources :tags, only: [ :index, :show ]
+  resources :tags, only: [ :index, :show ], param: :name
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "posts#index"
