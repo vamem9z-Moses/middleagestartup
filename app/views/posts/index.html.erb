@@ -4,8 +4,18 @@
       <h2 class="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">From the blog</h2>
       <p class="mt-2 text-lg/8 text-gray-600">Learn how to grow your business with our expert advice.</p>
     </div>
-    <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <%= render partial: "index_post_item", collection: @posts, as: :post %>
+    <div id="posts">
+      <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <%= render partial: "index_post_item", collection: @posts, as: :post %>
+      </div>
     </div>
   </div>
+    <div id="next_link">
+      <div class="flex justify-center">
+        <% if @pagy.next.present? %>
+          <%= button_to  "Browse More Posts", @pagy.page_url(:next),  method: :patch,
+            class: "inline-block font-medium text-dark border border-dark rounded-md py-3 px-7.5 hover:bg-stone-950 hover:text-white ease-in duration-200 mt-12.5 lg:mt-17.5"  %>
+        <% end %>
+      </div>
+    </div>
 </div> 

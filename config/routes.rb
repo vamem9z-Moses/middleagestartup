@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :authors, only: [ :index, :show ]
-  resources :posts, only: [ :index, :show ]
+  resources :posts, only: [ :index, :show ] do
+    collection do
+      patch :index # Required for infinite scroll
+    end
+  end
   resources :tags, only: [ :index, :show ], param: :name
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
