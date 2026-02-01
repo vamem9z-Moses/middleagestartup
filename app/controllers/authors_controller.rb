@@ -8,7 +8,12 @@ class AuthorsController < ApplicationController
 
   # GET /authors/1 or /authors/1.json
   def show
-    @posts = Post.where(author: @author, published: true)
+    @pagy, @posts = pagy(:countless, Post.where(author: @author, published: true).order(updated_at: :desc), limit: 9)
+
+    respond_to do |format|
+      format.html # GET
+      format.turbo_stream # Patch
+    end
   end
 
   private
