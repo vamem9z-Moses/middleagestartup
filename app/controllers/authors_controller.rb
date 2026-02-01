@@ -8,7 +8,7 @@ class AuthorsController < ApplicationController
 
   # GET /authors/1 or /authors/1.json
   def show
-    @posts = Post.where("author_id = ?", @author.id)
+    @posts = Post.where(author: @author, published: true)
   end
 
   private

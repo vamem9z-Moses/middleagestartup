@@ -1,4 +1,26 @@
-<div>
-  <h1 class="font-bold text-4xl">Authors#show</h1>
-  <p>Find me in app/views/authors/show.html.erb</p>
-</div>
+<section class="pt-15.75 pb-17.5">
+  <div id="<%= dom_id @author %>" class="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
+    <div
+      class="max-w-[140px] mx-auto w-full h-35 rounded-full flex items-center justify-center border border-gray-3">
+      <div class="max-w-[100px] w-full h-25 rounded-full overflow-hidden">
+        <% if @author.avatar.present? %>
+          <%= image_tag url_for(@author.avatar), alt: "Avatar for author " + @author.name %>
+        <% end %>
+      </div>
+    </div>
+    <div class="max-w-[770px] mx-auto w-full text-center mb-15 mt-5" >
+      <h1
+        class="font-bold text-heading-6 lg:text-heading-4 text-dark mb-4">
+        <%= @author.name %>
+      </h1>
+      <p>
+        <%= @author.blurb %>
+      </p>
+    </div>
+    <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-11 gap-x-7.5">
+      <!-- blog items -->
+      <%= render partial: "posts/index_post_item", collection: @posts, as: :post %>
+    </div>
+  </div>
+</section>

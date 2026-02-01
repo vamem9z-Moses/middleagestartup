@@ -26,15 +26,17 @@
       <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600"><%= post.body.to_plain_text.truncate(180) %></p>
     </div>
     <div class="relative mt-8 flex items-center gap-x-4 justify-self-end">
-      <%= image_tag url_for(post.author.avatar), alt: post.author.name, class: "size-10 rounded-full bg-gray-100" %>
-      <div class="text-sm/6">
-        <p class="font-semibold text-gray-900">
-          <a href="#">
-            <span class="absolute inset-0"></span>
-            <%= post.author.name %>
-          </a>
-        </p>
-      </div>
+        <% if post.author.avatar.present? %>
+          <%= image_tag url_for(post.author.avatar), alt: post.author.name, class: "size-10 rounded-full bg-gray-100" %>
+        <% end %>
+        <div class="text-sm/6">
+          <p class="font-semibold text-gray-900">
+            <%= link_to post.author do %>
+              <span class="absolute inset-0"></span>
+              <%= post.author.name %>
+            <% end %>
+          </p>
+        </div>
     </div>
   </div>
 </article>
