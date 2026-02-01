@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :authors, only: [ :index, :show ]
+  resources :authors, only: [ :index, :show ], param: :name
   resources :posts, only: [ :index, :show ] do
     collection do
       patch :index # Required for infinite scroll

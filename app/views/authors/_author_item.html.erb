@@ -4,7 +4,7 @@
     <div class="flex flex-wrap items-center gap-8">
       <div class="w-25 h-25 rounded-full overflow-hidden">
         <% if author.avatar.present? %> 
-          <%= image_tag author.avatar.attachment, alt: "user" %>
+          <%= image_tag author.avatar.attachment, alt: author.name %>
         <% end %>
       </div>
 

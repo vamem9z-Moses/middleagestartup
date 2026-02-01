@@ -5,9 +5,11 @@ one:
   last_name: Author
   blurb: MyString
   email: one@example.com
+  name: "First Author"
 
 two:
   first_name: Second
   last_name: Author
   blurb: MyString
   email: two@example.com
+  name: "Second Author"

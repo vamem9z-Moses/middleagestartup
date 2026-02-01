@@ -8,9 +8,12 @@ class Author < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true
   validates :blurb, presence: true
 
+  def to_param
+    name
+  end
 
   private
-  def set_name
-    self.name = self.first_name + " " + self.last_name
-  end
+    def set_name
+      self.name = self.first_name + " " + self.last_name
+    end
 end

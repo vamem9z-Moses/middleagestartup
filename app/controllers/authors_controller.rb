@@ -14,11 +14,11 @@ class AuthorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_author
-      @author = Author.find(params.expect(:id))
+      @author = Author.find_by(name: params.expect(:name))
     end
 
     # Only allow a list of trusted parameters through.
     def author_params
-      params.expect(author: [ :avatar, :first_name, :last_name, :email, :blurb ])
+      params.expect(author: [ :avatar, :first_name, :last_name, :email, :blurb, :name ])
     end
 end
