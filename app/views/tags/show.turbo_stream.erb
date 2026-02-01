@@ -1,0 +1,13 @@
+
+<%= turbo_stream.append "posts" do %>
+  <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      <%= render partial: "posts/index_post_item", collection: @posts, as: :post %>
+  </div>
+<% end %>
+
+<%= turbo_stream.update "next_link" do %>
+  <% if @pagy.next.present? %>
+    <%= button_to  "Browse More Posts", @pagy.page_url(:next), method: :patch,
+    class: "flex justify-center font-medium text-dark border border-dark rounded-md py-3 px-7.5 hover:bg-stone-950 hover:text-white ease-in duration-200 mx-auto mt-12.5 lg:mt-17.5" %>
+  <% end %>
+<% end %>

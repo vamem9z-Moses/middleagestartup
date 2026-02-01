@@ -10,12 +10,12 @@
       </div>
     </div>
   </div>
-    <div id="next_link">
-      <div class="flex justify-center">
-        <% if @pagy.next.present? %>
-          <%= button_to  "Browse More Posts", @pagy.page_url(:next),  method: :patch,
-            class: "inline-block font-medium text-dark border border-dark rounded-md py-3 px-7.5 hover:bg-stone-950 hover:text-white ease-in duration-200 mt-12.5 lg:mt-17.5"  %>
-        <% end %>
-      </div>
+  <div id="next_link">
+    <div class="flex justify-center">
+      <% if @pagy.next.present? %>
+        <%= button_to  "Browse More Posts", @pagy.page_url(:next),  method: :patch,
+          class: "inline-block font-medium text-dark border border-dark rounded-md py-3 px-7.5 hover:bg-stone-950 hover:text-white ease-in duration-200 mt-12.5 lg:mt-17.5"  %>
+      <% end %>
     </div>
+  </div>
 </div> 
