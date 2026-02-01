@@ -66,6 +66,7 @@ class PostSeed
                   featured_image: FeaturedImage.all.sample,
                   published: published,
                   publication_date: published_date,
+                  read_time: [ nil, rand(1..10) ].sample,
                   created_at: created_at,
                   updated_at: updated_at)
       tags = select_post_tags(post)

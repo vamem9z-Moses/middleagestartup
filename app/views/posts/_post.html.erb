@@ -1,22 +1,152 @@
-<div id="<%= dom_id post %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= post.title %>
+<!-- ===== Blog Single Start ===== -->
+<section class="pt-15.75 pb-17.5">
+  <div class="max-w-[1030px] mx-auto px-4 sm:px-8 xl:px-0">
+    <div class="max-w-[770px] mx-auto">
+      <h1 class="font-bold text-2xl sm:text-4xl lg:text-custom-2 text-dark mb-6 ">
+        <%= link_to post.title, post  %> 
+      </h1>
+
+      <div
+        class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 mt-7.5">
+        <div class="flex flex-wrap items-center gap-4">
+          <%= link_to url_for(post.author), 
+            class: "flex w-12.5 h-12.5 rounded-full overflow-hidden" do %> 
+            <% if post.author.avatar.present? %>
+              <%= image_tag url_for(post.author.avatar), alt: "Avatar for author " + post.author.name %>
+            <% end %>
+          <% end %>
+
+          <div>
+            <h4 class="font-medium text-custom-lg text-dark">
+              <%= link_to post.author.name, url_for(post.author) %>
+            </h4>
+            <div class="flex gap-5 align-bottom">
+              <div class="flex items-center gap-1.5">
+                <%= time_tag post.updated_at, "data-local": "time", "data-format": "%B %e, %Y" %>
+                <span
+                  class="flex w-[3px] h-[3px] rounded-full bg-dark-2"
+                ></span>
+                <% if post.read_time.present? %>
+                  <p><%= post.read_time %> min read</p>
+                <% end %>
+              </div>
+              <div>
+                <% post.tags.each do |tag| %>
+                  <%= link_to tag.name, tag,
+                  class: "text-green-dark bg-green/[0.08] font-medium text-sm py-1 px-3 rounded-full" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insert social links partial here -->
+      </div>
+    </div>
+
+    <div class="max-w-[770px] mx-auto">
+      <%= link_to post do %>
+        <% if post.featured_image.present? %>
+          <%= image_tag url_for(post.featured_image.image), alt: "blog", class: "pb-0 mb-0 my-11 mx-auto" %>
+        <% end %>
+      <% end %>
+      <% if post.featured_image.present? %>
+        <p class="flex items-center justify-center pt-0 mt-0 my-11 mx-auto text-sm"><%= post.featured_image.attribution %></p>
+      <% end %>
+    </div>
+
+    <div class="max-w-[770px] mx-auto">
+      <div>
+        <%= post.body %>
+      </div>
+
+
+      <!-- Author Details -->
+      <div
+        class="relative overflow-hidden z-20 rounded-[10px] py-5 sm:py-10 px-4 sm:px-11 mt-10"
+      >
+        <!-- BG Shapes Start -->
+        <div>
+          <div
+            class="absolute bottom-0 left-0 rounded-[10px] w-full h-full bg-gray z-1"></div>
+          <div
+            class="absolute bottom-0 left-0 rounded-[10px] w-full h-full z-10">
+            <%= image_tag "blog/blog-bg.svg", alt: "shape", class: "absolute bottom-0"  %>
+          </div>
+        </div>
+        <!-- BG Shapes End -->
+
+        <div class="flex flex-col sm:flex-row gap-7.5 relative z-30">
+          <% if post.author.avatar.present? %>
+            <%= image_tag url_for(post.author.avatar), alt: "Avatar for author " + post.author.name, 
+              class: "max-w-[97px] w-full h-[97px] shadow-1 rounded-full border-[6px] border-white overflow-hidden" %>
+          <% end %>
+
+          <div>
+            <h4 class="font-medium text-custom-lg text-dark mb-3">
+              <%= post.author.name %>
+            </h4>
+            <p>
+              <%= post.author.blurb %>
+            </p>
+            
+            <% if post.author.avatar.present? %>
+              <%= link_to "View profile",  url_for(post.author), alt: "Avatar for author " + post.author.name, 
+                class: "flex text-custom-sm text-primary mt-4" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- buttns -->
+      <div class="mt-10 flex rounded-md border border-gray-3">
+        <% if @prev_post.present? %>
+          <button
+            class="group flex-1 p-4 sm:p-7.5 ease-in duration-200 hover:bg-gray rounded-l-md text-left border-r border-gray-3">
+            <span class="flex items-center gap-4 group-hover:text-primary">
+              <svg
+                class="fill-current"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M21 11.175H4.98748L11.3625 4.6875C11.7 4.35 11.7 3.825 11.3625 3.4875C11.025 3.15 10.5 3.15 10.1625 3.4875L2.39998 11.3625C2.06248 11.7 2.06248 12.225 2.39998 12.5625L10.1625 20.4375C10.3125 20.5875 10.5375 20.7 10.7625 20.7C10.9875 20.7 11.175 20.625 11.3625 20.475C11.7 20.1375 11.7 19.6125 11.3625 19.275L5.02498 12.8625H21C21.45 12.8625 21.825 12.4875 21.825 12.0375C21.825 11.55 21.45 11.175 21 11.175Z"
+                  fill=""/>
+              </svg>
+              <%= link_to "PREVIOUS POST", @prev_post %>
+            </span>
+            <p class="hidden sm:block text-custom-sm mt-4 text-body">
+              <%= @prev_post.title %> 
+            </p>
+          </button>
+        <% end %>
+        <% if @next_post.present? %>
+          <button
+            class="group flex-1 p-4 sm:p-7.5 ease-in duration-200 hover:bg-gray rounded-r-md text-right">
+            <span
+              class="flex items-center justify-end gap-4 group-hover:text-primary">
+              <%= link_to "NEXT POST", @next_post %>
+              <svg
+                class="fill-current"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M21.6 11.4L13.8375 3.52498C13.5 3.18748 12.975 3.18748 12.6375 3.52498C12.3 3.86248 12.3 4.38748 12.6375 4.72498L18.9375 11.1375H3.00005C2.55005 11.1375 2.17505 11.5125 2.17505 11.9625C2.17505 12.4125 2.55005 12.825 3.00005 12.825H19.0125L12.6375 19.3125C12.3 19.65 12.3 20.175 12.6375 20.5125C12.7875 20.6625 13.0125 20.7375 13.2375 20.7375C13.4625 20.7375 13.6875 20.6625 13.8375 20.475L21.6 12.6C21.9375 12.2625 21.9375 11.7375 21.6 11.4Z"
+                  fill=""
+                />
+              </svg>
+            </span>
+            <p class="hidden sm:block text-custom-sm mt-4 text-body">
+              <%= @next_post.title %> 
+            </p>
+          </button>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div>
-    <strong class="block font-medium mb-1">Body:</strong>
-    <%= post.body %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Published:</strong>
-    <%= post.published? ? "Yes" : "No" %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Publication date:</strong>
-    <%= post.publication_date %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Slug:</strong>
-    <%= post.slug %>
-  </div>
-</div>
+</section>

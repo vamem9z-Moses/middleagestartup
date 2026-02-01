@@ -2,6 +2,7 @@ require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    authors(:one).save
     @post = posts(:one)
     @post.save
   end

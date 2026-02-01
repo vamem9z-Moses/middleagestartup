@@ -13,3 +13,7 @@ one_author_attachment:
   record: one (Author)
   blob: avatar_blob
 
+two_author_attachment:
+  name: avatar
+  record: two (Author)
+  blob: avatar_blob
