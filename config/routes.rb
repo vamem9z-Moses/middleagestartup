@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "static_pages/about"
   resources :authors, only: [ :index, :show ], param: :name do
     member do
       patch :show # Required for infinite scroll
